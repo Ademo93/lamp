@@ -1,0 +1,51 @@
+// lamp.idl : source de la bibliothèque de types pour le projet de contrôle ActiveX.
+
+// Ce fichier sera traité par l'outil Compilateur MIDL pour
+// produire la bibliothèque de types (lamp.tlb) qui deviendra une ressource dans
+// lamp.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(3b976918-be24-484f-92bc-2a2494f10fbf), version(1.0),
+  control ]
+library lampLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Interface de dispatch principale pour ClampCtrl
+	[ 
+		uuid(a8cb5563-b2ab-4706-b105-bcd072b6466f)
+	]
+	dispinterface _Dlamp
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Interface de dispatch d'événement pour ClampCtrl
+
+	[ 
+		uuid(fb8db315-123e-4a99-a6bc-f73575848628)
+	]
+	dispinterface _DlampEvents
+	{
+		properties:
+			//  L'interface d'événement n'a pas de propriété
+
+		methods:
+	};
+
+	//  Informations de classe pour ClampCtrl
+	[
+		uuid(ba9c8b75-c449-45fe-92e2-47fca047c0a6)
+	]
+	coclass lamp
+	{
+		[default] dispinterface _Dlamp;
+		[default, source] dispinterface _DlampEvents;
+	};
+
+};
